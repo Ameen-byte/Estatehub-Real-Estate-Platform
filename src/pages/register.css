@@ -1,0 +1,38 @@
+.register-main { max-width: 980px; margin: 0 auto; padding: 36px 56px 28px; }
+.back-link { padding: 0; border: 0; color: var(--muted); background: transparent; font-size: 13px; font-weight: 600; }
+.back-link:hover { color: var(--green); }
+.register-intro { margin: 40px 0 28px; }
+.register-intro h1 { margin-bottom: 12px; }
+.registration-form { border: 1px solid var(--line); border-radius: 4px; background: var(--white); box-shadow: var(--shadow); }
+.form-section { padding: 30px 32px; border-bottom: 1px solid var(--line); }
+.form-section-heading { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 25px; }
+.form-section-heading h2 { margin: 0 0 5px; }
+.step-number { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: 1px; }
+.form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 18px; }
+.field { position: relative; min-width: 0; }
+.field-wide { grid-column: 1 / -1; }
+.field > label { display: block; margin-bottom: 8px; color: var(--ink); font-size: 12px; font-weight: 700; }
+.required { color: var(--danger); }
+.form-control { width: 100%; min-height: 44px; padding: 11px 13px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); background: var(--paper); font-size: 13px; transition: border-color 160ms ease, box-shadow 160ms ease; }
+textarea.form-control { resize: vertical; }
+.form-control:focus { border-color: var(--green); outline: none; box-shadow: 0 0 0 3px var(--mint); }
+.form-control.has-error { border-color: var(--danger); }
+.form-control::placeholder { color: var(--muted); }
+.form-error { margin: 6px 0 0; color: var(--danger); font-size: 11px; line-height: 1.35; }
+.password-wrap { position: relative; }
+.password-wrap .form-control { padding-right: 62px; }
+.password-toggle { position: absolute; top: 50%; right: 10px; transform: translateY(-50%); border: 0; color: var(--green); background: transparent; font-size: 11px; font-weight: 700; }
+.strength { display: flex; align-items: center; justify-content: space-between; margin-top: 9px; color: var(--muted); font-size: 11px; }
+.strength-bars { display: flex; gap: 3px; }
+.strength-bars i { display: block; width: 22px; height: 4px; background: var(--line); }
+.strength-bars i.filled { background: var(--green); }
+.character-count { display: block; margin-top: 5px; color: var(--muted); font-size: 10px; text-align: right; }
+.terms { display: flex; align-items: flex-start; gap: 9px; margin: 24px 32px 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+.terms input { accent-color: var(--green); margin-top: 2px; }
+.terms a { color: var(--green); font-weight: 700; }
+.terms.has-error { color: var(--danger); }
+.terms-error { margin: 6px 32px 0; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; padding: 24px 32px 30px; }
+.success-banner { margin-bottom: 22px; padding: 15px 18px; border: 1px solid #b8dbc4; border-radius: 3px; color: var(--green-deep); background: var(--mint); font-size: 13px; }
+.success-banner strong { margin-right: 5px; }
+@media (max-width: 700px) { .register-main { padding: 28px 18px 20px; } .register-intro { margin: 30px 0 22px; } .form-section { padding: 24px 18px; } .form-grid { grid-template-columns: 1fr; gap: 16px; } .field-wide { grid-column: auto; } .terms { margin-right: 18px; margin-left: 18px; } .terms-error { margin-right: 18px; margin-left: 18px; } .form-actions { padding: 22px 18px 24px; } }

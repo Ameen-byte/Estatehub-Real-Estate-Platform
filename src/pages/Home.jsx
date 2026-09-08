@@ -1,0 +1,17 @@
+import Navbar from '../components/Navbar.jsx'
+import Sidebar from '../components/Sidebar.jsx'
+import StatCard from '../components/StatCard.jsx'
+import PropertyCard from '../components/PropertyCard.jsx'
+import ActivityList from '../components/ActivityList.jsx'
+import Footer from '../components/Footer.jsx'
+import { Button } from '../components/Button.jsx'
+
+const stats = [{ label: 'Active listings', value: '24', change: '+12.5% this month', icon: '⌂' }, { label: 'Total views', value: '8,492', change: '+18.2% this month', icon: '◉' }, { label: 'Saved properties', value: '186', change: '+8.4% this month', icon: '♡' }, { label: 'Avg. response time', value: '2.4h', change: '-14.6% this month', icon: '◷', negative: true }]
+const properties = [{ title: 'The Willow House', location: 'Brookline, MA', price: '$1,245,000', tag: 'Featured', image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80' }, { title: 'Cedar & Stone', location: 'Portland, OR', price: '$895,000', tag: 'New listing', image: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80' }, { title: 'The Greenhouse', location: 'Austin, TX', price: '$740,000', tag: 'Open house', image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80' }, { title: 'Lakeside 08', location: 'Madison, WI', price: '$620,000', tag: 'New listing', image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80' }]
+const activities = [{ id: 1, icon: '♡', title: 'New save on The Willow House', detail: 'A potential buyer saved your listing.', time: '12 minutes ago' }, { id: 2, icon: '↗', title: 'Listing views are up 18%', detail: 'The Greenhouse is getting noticed.', time: '2 hours ago' }, { id: 3, icon: '✦', title: 'Open house reminder', detail: 'Your event starts this Saturday at 11:00 AM.', time: 'Yesterday' }, { id: 4, icon: '✓', title: 'Message from Olivia Chen', detail: '“Is the backyard furnished?”', time: 'Yesterday' }]
+
+function Home({ darkMode, onToggleTheme }) {
+  return <div id="top" className="page-layout"><Sidebar /><div className="content-wrap"><Navbar darkMode={darkMode} onToggleTheme={onToggleTheme} /><main className="main-content"><div className="hero-row"><div><p className="eyebrow">Tuesday, September 8, 2026</p><h1>Good morning, Ameen.</h1><p className="subtle">Here is what is happening with your properties today.</p></div><div className="header-actions"><button className="icon-button" type="button" aria-label="Search">⌕</button><Button>+ New listing</Button></div></div><section id="overview" className="stats-grid" aria-label="Portfolio overview">{stats.map((stat) => <StatCard {...stat} key={stat.label} />)}</section><div className="dashboard-grid"><section id="listings" className="panel"><div className="section-heading"><div><h2>Your properties</h2><p className="subtle">Recently updated listings</p></div><button className="view-link" type="button">View all →</button></div><div className="listing-grid">{properties.map((property) => <PropertyCard {...property} key={property.title} />)}</div></section><section id="activity" className="panel activity-panel"><div className="section-heading"><div><h2>Recent activity</h2><p className="subtle">Keep up with your portfolio</p></div><button className="view-link" type="button" aria-label="More activity">•••</button></div><ActivityList activities={activities} /></section></div></main><Footer /></div></div>
+}
+
+export default Home

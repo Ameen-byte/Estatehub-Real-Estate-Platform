@@ -8,6 +8,10 @@ EstateHub is an initial React and Vite frontend for a modern real-estate portfol
 - Portfolio statistic cards rendered from reusable data-driven props
 - Reusable `Button`, `StatCard`, `PropertyCard`, and `ActivityList` components
 - Light/dark theme toggle (bonus feature)
+- Login page with required-field validation, success/failure states, and a 2-second loading state
+- React Router DOM navigation with shared layout, protected dashboard routes, nested routes, dynamic property details, and a 404 page
+- Dynamic property cards and a responsive property table rendered with `map()` and stable `key` values
+- Search-ready property data module and dashboard statistics
 - Responsive layout for desktop, tablet, and mobile screens
 - External CSS, component stylesheet, inline style for dynamic property images, and CSS variables
 - Accessible labels and keyboard focus styles
@@ -34,6 +38,16 @@ EstateHub is an initial React and Vite frontend for a modern real-estate portfol
 - **Event handling:** `onChange` receives the event object and updates the matching setter. Buttons use `onClick`; the form uses `onSubmit` and calls `event.preventDefault()` so the browser does not refresh the page.
 - **Controlled components and two-way binding:** Every input receives its current state through `value` or `checked`, and its `onChange` handler sends user edits back into state. The password strength and character counter update immediately from those values.
 - **Validation:** Submission builds an error object before allowing registration. The password must have at least 8 characters, uppercase, lowercase, number, and special character. The success state is shown only when all validation rules pass.
+
+## Login, Rendering, and Routing
+
+- **Login:** `/login` validates required email and password fields, simulates a 2-second request, disables the Login button during loading, and conditionally displays success or invalid-credential feedback. Demo credentials are `admin@estatehub.com` and `EstateHub@123`.
+- **Conditional rendering:** Ternaries switch the loading message, success message, and failure message. Logical `&&` renders validation alerts, password strength feedback, cards, and the property table only when their data exists.
+- **Empty state:** The dashboard uses `records.length ? ... : <EmptyState />`, so a meaningful empty view is ready when the data collection is empty.
+- **List rendering:** Property cards and table rows use `.map()` with each record's stable `id` as the React `key`.
+- **Router setup:** `main.jsx` mounts the app, while `App.jsx` owns `BrowserRouter`, `Routes`, and `Route` definitions. `Layout.jsx` provides the shared Navbar, routed content via `Outlet`, and Footer.
+- **Navigation:** `Link` and `NavLink` provide declarative navigation and active styling. `useNavigate()` handles logout and back actions. `useParams()` reads `/properties/:id` for the dynamic detail page.
+- **Nested and protected routes:** `/dashboard/*` contains Overview, Profile, and Settings child routes. The dashboard is protected and redirects unauthenticated visitors to `/login`; unmatched URLs render the 404 page.
 
 ## Class Components vs Functional Components
 

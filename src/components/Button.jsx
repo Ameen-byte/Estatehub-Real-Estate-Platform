@@ -1,7 +1,7 @@
 import './components.css'
 
-function Button({ children, variant = 'primary', onClick, type = 'button' }) {
-  return <button className={`button button-${variant}`} onClick={onClick} type={type}>{children}</button>
+function Button({ children, variant = 'primary', onClick, type = 'button', disabled = false }) {
+  return <button className={`button button-${variant}`} disabled={disabled} onClick={onClick} type={type}>{children}</button>
 }
 
 export { Button }

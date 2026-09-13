@@ -12,6 +12,10 @@ EstateHub is an initial React and Vite frontend for a modern real-estate portfol
 - React Router DOM navigation with shared layout, protected dashboard routes, nested routes, dynamic property details, and a 404 page
 - Dynamic property cards and a responsive property table rendered with `map()` and stable `key` values
 - Search-ready property data module and dashboard statistics
+- DummyJSON API integration with loading, refresh, fallback, and error states
+- Complete property CRUD: add, edit, delete with confirmation, local storage persistence, search, and sorting
+- Login persistence and theme preference persistence through local storage
+- Session storage for the last visited route and active property search
 - Responsive layout for desktop, tablet, and mobile screens
 - External CSS, component stylesheet, inline style for dynamic property images, and CSS variables
 - Accessible labels and keyboard focus styles
@@ -48,6 +52,15 @@ EstateHub is an initial React and Vite frontend for a modern real-estate portfol
 - **Router setup:** `main.jsx` mounts the app, while `App.jsx` owns `BrowserRouter`, `Routes`, and `Route` definitions. `Layout.jsx` provides the shared Navbar, routed content via `Outlet`, and Footer.
 - **Navigation:** `Link` and `NavLink` provide declarative navigation and active styling. `useNavigate()` handles logout and back actions. `useParams()` reads `/properties/:id` for the dynamic detail page.
 - **Nested and protected routes:** `/dashboard/*` contains Overview, Profile, and Settings child routes. The dashboard is protected and redirects unauthenticated visitors to `/login`; unmatched URLs render the 404 page.
+
+## API, Hooks, and Persistence
+
+- **API integration:** `src/hooks/useProperties.js` fetches property-like records from DummyJSON and maps them into EstateHub records. The dashboard and dynamic details page consume the same hook.
+- **`useEffect()`:** The hook fetches on mount and whenever the refresh dependency changes. It also persists updated records whenever the property state changes. Cleanup prevents an unmounted component from receiving a late API response.
+- **Loading and errors:** A spinner message appears while data loads. Failed requests show a friendly alert and preserve locally saved records as a fallback. The Refresh API button re-runs the effect without reloading the page.
+- **Local storage:** Properties are stored under `estatehub-properties`, login data under `estatehub-user`, and the selected theme under `estatehub-theme`. Records, auth, and theme therefore remain available after a browser refresh.
+- **Session storage:** The shared layout stores `estatehub-last-route`, while the dashboard stores its search keyword in `estatehub-search` for the current browser session.
+- **CRUD:** The dashboard form creates local records, Edit pre-fills the same form, and Delete requires confirmation before updating React state and local storage. Cards and table rows update automatically from the resulting state.
 
 ## Class Components vs Functional Components
 

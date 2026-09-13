@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import Layout from './components/Layout.jsx'
 import Home from './pages/Home.jsx'
@@ -17,10 +17,23 @@ function ProtectedRoute({ isLoggedIn, children }) {
 }
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [darkMode, setDarkMode] = useState(() => window.localStorage.getItem('estatehub-theme') === 'dark')
+  const [isLoggedIn, setIsLoggedIn] = useState(() => Boolean(window.localStorage.getItem('estatehub-user')))
 
-  return <BrowserRouter><div className={darkMode ? 'app-shell dark-mode' : 'app-shell'}><Routes><Route element={<Layout darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} isLoggedIn={isLoggedIn} onLogout={() => setIsLoggedIn(false)} />}><Route path="/" element={<Home />} /><Route path="/register" element={<Register />} /><Route path="/login" element={<Login onLogin={() => setIsLoggedIn(true)} />} /><Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>}><Route index element={<DashboardOverview />} /><Route path="overview" element={<DashboardOverview />} /><Route path="profile" element={<Profile />} /><Route path="settings" element={<Settings />} /></Route><Route path="/properties/:id" element={<Details />} /><Route path="*" element={<NotFound />} /></Route></Routes></div></BrowserRouter>
+  useEffect(() => {
+    window.localStorage.setItem('estatehub-theme', darkMode ? 'dark' : 'light')
+  }, [darkMode])
+
+  const handleLogin = (user) => {
+    window.localStorage.setItem('estatehub-user', JSON.stringify(user))
+    setIsLoggedIn(true)
+  }
+  const handleLogout = () => {
+    window.localStorage.removeItem('estatehub-user')
+    setIsLoggedIn(false)
+  }
+
+  return <BrowserRouter><div className={darkMode ? 'app-shell dark-mode' : 'app-shell'}><Routes><Route element={<Layout darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />}><Route path="/" element={<Home />} /><Route path="/register" element={<Register />} /><Route path="/login" element={<Login onLogin={handleLogin} />} /><Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>}><Route index element={<DashboardOverview />} /><Route path="overview" element={<DashboardOverview />} /><Route path="profile" element={<Profile />} /><Route path="settings" element={<Settings />} /></Route><Route path="/properties/:id" element={<Details />} /><Route path="*" element={<NotFound />} /></Route></Routes></div></BrowserRouter>
 }
 
 export default App

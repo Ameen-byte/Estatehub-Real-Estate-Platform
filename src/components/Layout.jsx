@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './Navbar.jsx'
 import Footer from './Footer.jsx'
@@ -6,6 +7,9 @@ function Layout({ darkMode, onToggleTheme, isLoggedIn, onLogout }) {
   const navigate = useNavigate()
   const location = useLocation()
   const handleLogout = () => { onLogout(); navigate('/login') }
+  useEffect(() => {
+    window.sessionStorage.setItem('estatehub-last-route', location.pathname)
+  }, [location.pathname])
   if (location.pathname === '/register') return <Outlet />
   return <><Navbar darkMode={darkMode} onToggleTheme={onToggleTheme} isLoggedIn={isLoggedIn} onLogout={location.pathname === '/login' ? undefined : handleLogout} /><Outlet /><Footer /></>
 }

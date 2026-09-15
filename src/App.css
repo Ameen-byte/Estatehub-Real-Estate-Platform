@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
-:root { --ink: #172a24; --muted: #72817a; --line: #e4e9e5; --paper: #f8faf8; --white: #ffffff; --green: #2d7157; --green-deep: #1e4d3c; --mint: #e6f1e9; --gold: #d8a852; --danger: #c96b5a; --shadow: 0 18px 45px rgba(35, 67, 53, 0.08); font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--paper); font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+:root { --ink: #17283d; --muted: #6c7a89; --line: #dfe5e8; --paper: #f7f5f0; --white: #fffdf9; --green: #087f78; --green-deep: #07545a; --mint: #e1f1ed; --gold: #d39a42; --danger: #bd6258; --shadow: 0 18px 45px rgba(23, 40, 61, 0.09); font-family: 'DM Sans', sans-serif; color: var(--ink); background: var(--paper); font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 320px; }
 button, input { font: inherit; }
 button { cursor: pointer; }
 .app-shell { min-height: 100vh; background: var(--paper); transition: background 220ms ease, color 220ms ease; }
-.app-shell.dark-mode { --ink: #eef6f0; --muted: #9aaca2; --line: #294238; --paper: #14211c; --white: #1d2d26; --mint: #233f33; --green: #79c69d; --green-deep: #b7e5c8; --shadow: 0 18px 45px rgba(0, 0, 0, 0.16); }
+.app-shell.dark-mode { --ink: #eff6f4; --muted: #a4b5b8; --line: #29434d; --paper: #12232d; --white: #18313a; --mint: #1d4649; --green: #66c4b7; --green-deep: #b7ebe1; --gold: #e2b565; --shadow: 0 18px 45px rgba(0, 0, 0, 0.25); }
 .page-layout { display: flex; min-height: 100vh; }
 .content-wrap { width: 100%; min-width: 0; }
 .main-content { max-width: 1440px; margin: 0 auto; padding: 48px 56px 28px; }
@@ -27,6 +27,7 @@ h2 { margin-bottom: 4px; font-size: 22px; letter-spacing: -0.5px; }
 .stat-label { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; color: var(--muted); font-size: 13px; }
 .stat-icon { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: var(--green); background: var(--mint); font-size: 15px; }
 .stat-value { margin-bottom: 7px; font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+.dark-mode .stat-value { color: var(--gold); }
 .stat-change { color: var(--green); font-size: 12px; font-weight: 600; }
 .stat-change.negative { color: var(--danger); }
 .dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(280px, .8fr); gap: 24px; }

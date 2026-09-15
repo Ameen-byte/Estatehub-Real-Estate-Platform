@@ -1,9 +1,9 @@
 .auth-page { display: grid; min-height: calc(100vh - 76px); grid-template-columns: 1fr 1fr; }
-.auth-visual { display: flex; flex-direction: column; justify-content: center; padding: 70px 10%; color: #f4faf5; background: linear-gradient(135deg, #1e4d3c, #2d7157); }
+.auth-visual { display: flex; flex-direction: column; justify-content: center; padding: 70px 10%; color: #f8fffd; background: linear-gradient(135deg, #07545a, #087f78 58%, #d39a42); }
 .auth-visual h1 { max-width: 520px; margin: 22px 0; color: #f4faf5; font-size: clamp(42px, 5vw, 70px); }
-.auth-visual > p:not(.eyebrow) { max-width: 390px; color: #cfe6d6; line-height: 1.7; }
-.auth-stat { display: flex; align-items: center; gap: 15px; margin-top: 70px; color: #cfe6d6; font-size: 12px; }
-.auth-stat strong { color: #f4faf5; font-size: 25px; }
+.auth-visual > p:not(.eyebrow) { max-width: 390px; color: #d8eeea; line-height: 1.7; }
+.auth-stat { display: flex; align-items: center; gap: 15px; margin-top: 70px; color: #d8eeea; font-size: 12px; }
+.auth-stat strong { color: #f8fffd; font-size: 25px; }
 .auth-card { align-self: center; max-width: 480px; width: 100%; margin: 0 auto; padding: 48px; }
 .auth-card h2 { margin: 0 0 8px; font-family: 'Playfair Display', serif; font-size: 30px; }
 .auth-card form { margin-top: 30px; }
@@ -16,7 +16,7 @@
 .register-prompt { margin-top: 28px; color: var(--muted); font-size: 12px; text-align: center; }
 .alert { display: flex; align-items: center; gap: 9px; margin-top: 22px; padding: 12px; border-radius: 3px; font-size: 12px; line-height: 1.4; }
 .success-alert { color: var(--green-deep); background: var(--mint); }
-.error-alert { color: var(--danger); background: #fcedea; }
+.error-alert { color: var(--danger); background: #f8e9e4; }
 .loading-alert { color: var(--green); background: var(--mint); }
 .spinner { width: 14px; height: 14px; border: 2px solid var(--line); border-top-color: var(--green); border-radius: 50%; animation: spin 700ms linear infinite; }
 @media (max-width: 700px) { .auth-page { display: block; min-height: 0; } .auth-visual { padding: 45px 24px; } .auth-visual h1 { font-size: 43px; } .auth-stat { margin-top: 35px; } .auth-card { padding: 42px 20px; } }

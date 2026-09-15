@@ -10,6 +10,8 @@ import Profile from './pages/Profile.jsx'
 import Settings from './pages/Settings.jsx'
 import Details from './pages/Details.jsx'
 import NotFound from './pages/NotFound.jsx'
+import SavedHomes from './pages/SavedHomes.jsx'
+import Legal from './pages/Legal.jsx'
 import './App.css'
 
 function ProtectedRoute({ isLoggedIn, children }) {
@@ -33,7 +35,8 @@ function App() {
     setIsLoggedIn(false)
   }
 
-  return <BrowserRouter><div className={darkMode ? 'app-shell dark-mode' : 'app-shell'}><Routes><Route element={<Layout darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />}><Route path="/" element={<Home />} /><Route path="/register" element={<Register darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} onBack={() => window.history.back()} />} /><Route path="/login" element={<Login onLogin={handleLogin} />} /><Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>}><Route index element={<DashboardOverview />} /><Route path="overview" element={<DashboardOverview />} /><Route path="profile" element={<Profile />} /><Route path="settings" element={<Settings />} /></Route><Route path="/properties/:id" element={<Details />} /><Route path="*" element={<NotFound />} /></Route></Routes></div></BrowserRouter>
+  return <BrowserRouter><div className={darkMode ? 'app-shell dark-mode' : 'app-shell'}><Routes><Route element={<Layout darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />}><Route path="/" element={<Home />} /><Route path="/register" element={<Register darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} onBack={() => window.history.back()} />} /><Route path="/login" element={<Login onLogin={handleLogin} />} /><Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>}><Route index element={<DashboardOverview />} /><Route path="overview" element={<DashboardOverview />} /><Route path="profile" element={<Profile />} /><Route path="settings" element={<Settings />} /></Route><Route path="/saved-homes" element={<ProtectedRoute isLoggedIn={isLoggedIn}><SavedHomes /></ProtectedRoute>} /><Route path="/properties/:id" element={<Details />} /><Route path="*" element={<NotFound />} /></Route></Routes></div></BrowserRouter>
+  return <BrowserRouter><div className={darkMode ? 'app-shell dark-mode' : 'app-shell'}><Routes><Route element={<Layout darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} isLoggedIn={isLoggedIn} onLogout={handleLogout} />}><Route path="/" element={<Home />} /><Route path="/register" element={<Register darkMode={darkMode} onToggleTheme={() => setDarkMode((current) => !current)} onBack={() => window.history.back()} />} /><Route path="/login" element={<Login onLogin={handleLogin} />} /><Route path="/legal/:type" element={<Legal />} /><Route path="/dashboard" element={<ProtectedRoute isLoggedIn={isLoggedIn}><Dashboard /></ProtectedRoute>}><Route index element={<DashboardOverview />} /><Route path="overview" element={<DashboardOverview />} /><Route path="profile" element={<Profile />} /><Route path="settings" element={<Settings />} /></Route><Route path="/saved-homes" element={<ProtectedRoute isLoggedIn={isLoggedIn}><SavedHomes /></ProtectedRoute>} /><Route path="/properties/:id" element={<Details />} /><Route path="*" element={<NotFound />} /></Route></Routes></div></BrowserRouter>
 }
 
 export default App

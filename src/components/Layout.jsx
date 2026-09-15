@@ -10,7 +10,7 @@ function Layout({ darkMode, onToggleTheme, isLoggedIn, onLogout }) {
   useEffect(() => {
     window.sessionStorage.setItem('estatehub-last-route', location.pathname)
   }, [location.pathname])
-  if (location.pathname === '/register') return <Outlet />
+  if (location.pathname === '/register') return <><Navbar darkMode={darkMode} onToggleTheme={onToggleTheme} isLoggedIn={isLoggedIn} onLogout={handleLogout} /><Outlet /><Footer /></>
   return <><Navbar darkMode={darkMode} onToggleTheme={onToggleTheme} isLoggedIn={isLoggedIn} onLogout={location.pathname === '/login' ? undefined : handleLogout} /><Outlet /><Footer /></>
 }
 
